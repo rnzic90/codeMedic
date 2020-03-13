@@ -1,0 +1,26 @@
+﻿@model LekarskaOrdinacijaCodeMedic.Models.Specijalizacija
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Specijalizacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vrsta_specijalizacije)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrsta_specijalizacije)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_specijalizacije }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

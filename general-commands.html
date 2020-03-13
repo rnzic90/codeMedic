@@ -1,0 +1,51 @@
+﻿Fix - Could not find a part of the path … bin\roslyn\csc.exe
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+
+<h2><strong>How to fix &lsquo;Your local changes to the following files will be overwritten by merge&rsquo;?</strong></h2>
+<p>The resolution of this error message depends on what you want to do. You can discard your local changes and pull the ones in the repository or you can save your local changes into a stash and pull the version from the repository. It all depends on your preference.</p>
+<p>Hence, we recommend that you consult with your team members and make sure that you all are on the&nbsp;<strong>same page&nbsp;</strong>before moving forward. If you commit wrongly or push the wrong version, it could affect the entire team.</p>
+<div>&nbsp;</div>
+<h3><strong>Method 1: Forcing a pull to overwrite local changes</strong></h3>
+<p>If you&nbsp;<strong>don&rsquo;t care about the changes done locally&nbsp;</strong>and want to obtain the code from the repository, you can force a pull. This will overwrite all the local changes done on your computer a duplicate copy of the version in the repository will appear.</p>
+<p>Execute the following commands in your IDE:</p>
+<pre>git reset -- hard
+
+git pull</pre>
+<p>This will instantly destroy all your local changes so make sure that you know what you are doing and don&rsquo;t need your local changes.</p>
+<h3><strong>Method 2: Keeping both changes (local and from the repo)</strong></h3>
+<p>If you want to keep both changes (changes done locally and changes present in the repository), you can add and commit your changes. When you pull, there will obviously be a merge conflict. Here you can use the tools in your IDE (such as Difftool and mergetool) to compare the two pieces of code and determine which changes to keep and which to remove. This is the middle way; no changes will be lost until you manually remove them.</p>
+<pre>git add $the_file_under_error
+
+git commit
+
+git pull</pre>
+<p>When you get a merge conflict, pop those conflict resolving tools and check line by line.</p>
+<h3><strong>Method 3: Keeping both changes BUT not committing</strong></h3>
+<p>This situation happens from time to time where developers are not ready to commit because there is some partly broken code which you are debugging. Here we can stash the changes safely, pull the version from the repository, and then unstash your code.</p>
+<pre>git stash save --keep-index</pre>
+<p>or</p>
+<pre>git stash</pre>
+<pre>git pull
+
+git stash pop</pre>
+<p>If there are some conflicts after you pop the stash, you should resolve them in the usual way. You can also use the command:</p>
+<pre>git stash apply</pre>
+<p>instead of pop if you are not ready to lose the stashed code due to conflicts.</p>
+<p>If merge doesn&rsquo;t seem like a viable option for you, consider doing a rebase. Rebasing is the process of moving or combining a sequence of commits to a new base commit. In the case of rebasing, change the code to:</p>
+<pre>git stash
+
+git pull --rebase origin master
+
+git stash pop</pre>
+<h3><strong>Method 4: Make changes to &lsquo;specific&rsquo; parts of your code</strong></h3>
+<p>If you want to make changes to specific parts of the code and don&rsquo;t want to replace everything, you can&nbsp;<strong>commit&nbsp;</strong>everything that you don&rsquo;t want to overwrite and then follow method 3. You can use the following command for the changes which you want to overwrite from the version present in the repository:</p>
+<pre>git checkout path/to/file/to/revert</pre>
+<p>or</p>
+<pre>git checkout HEAD^ path/to/file/to/revert</pre>
+<p>Also, you need to make sure that the file is not staged via:</p>
+<pre>git reset HEAD path/to/file/to/revert</pre>
+<p>Then proceed with the pull command:</p>
+<pre>git pull</pre>
+<p>This will then attempt at fetching the version from the repository.</p>
+
+https://appuals.com/how-to-fix-git-error-your-local-changes-to-the-following-files-will-be-overwritten-by-merge/

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LekarskaOrdinacijaCodeMedic.Models.Usluga>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/back-end/layout/back_end_layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.vrsta_usluge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cena)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vrsta_usluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cena)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_usluga }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_usluga }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id_usluga })
+                    </td>
+                </tr>
+            }
+
+        </table>
+     </div>
+</div>

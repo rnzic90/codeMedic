@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LekarskaOrdinacijaCodeMedic.Models.Specijalizacija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vrsta_specijalizacije)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrsta_specijalizacije)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_specijalizacije }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_specijalizacije }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_specijalizacije })
+        </td>
+    </tr>
+}
+
+</table>

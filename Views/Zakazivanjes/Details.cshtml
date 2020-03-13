@@ -1,0 +1,67 @@
+﻿@model LekarskaOrdinacijaCodeMedic.Models.Zakazivanje
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/back-end/layout/back_end_layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zakazivanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vreme_pocetka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vreme_pocetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vreme_zavrsetka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vreme_zavrsetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.beleska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beleska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers1.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers1.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usluga.vrsta_usluge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usluga.vrsta_usluge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_zakazivanja }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

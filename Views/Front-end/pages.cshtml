@@ -1,0 +1,14 @@
+﻿
+@*@using pokusajX.Models
+@model menu
+@{
+    testEntities1 db = new testEntities1();
+    IEnumerable<menu> data = db.menu.OrderByDescending(x => x.redosled).ToList();
+    Layout = "~/Views/front-end/layout/front_end_layout.cshtml";
+}
+@{
+    foreach (var item in data)
+    {
+        <p>@item.naslov_menu</p>
+        }
+    }*@

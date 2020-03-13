@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--===============================================
+    Template Design By WpFreeware Team.
+    Author URI : http://www.wpfreeware.com/
+    ====================================================-->
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="srcyr-utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code Medic</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="~/assets/front/images/favicon.ico" />
+    
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap css file-->
+    <link href="~/assets/front/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font awesome css file-->
+    <link href="~/assets/front/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Default Theme css file -->
+    <link id="switcher" href="~/assets/front/css/themes/default-theme.css" rel="stylesheet">
+    <!-- Slick slider css file -->
+    <link href="~/assets/front/css/slick.css" rel="stylesheet">
+    <!-- Photo Swipe Image Gallery -->
+    <link rel='stylesheet prefetch' href='~/assets/front/css/photoswipe.css'>
+    <link rel='stylesheet prefetch' href='~/assets/front/css/default-skin.css'>
+
+    <!-- Main structure css file -->
+    <link href="~/assets/front/style.css" rel="stylesheet">
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <!-- BEGAIN PRELOADER -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- END PRELOADER -->
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-heartbeat"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!--=========== BEGIN HEADER SECTION ================-->
+    <header id="header">
+        <!-- BEGIN MENU -->
+        <div class="menu_area">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- LOGO -->
+                        <!-- TEXT BASED LOGO -->
+                        <a class="navbar-brand" href="@Url.Action("Index","Front")"><i class="fa fa-heartbeat"></i>Code <span>Medic</span></a>
+                        <!-- IMG BASED LOGO  -->
+                        <!--  <a class="navbar-brand" href="index.html"><img src="~/assets/front/images/logo.png" alt="logo"></a>   -->
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+
+
+                            <li class="active"><a href="@Url.Action("Index", "Front")">Početna</a></li>
+
+                            <li><a href="@Url.Action("NasTim", "Front")">Naš Tim</a></li>
+                            <li><a href="@Url.Action("ZakazivanjeT", "Zakazivanjes")">Zakazivanje</a></li>
+
+
+                            <!--   <li><a href="@Url.Action("Galerija", "Front")">Galerija</a></li>  -->
+
+                            <li><a href="@Url.Action("Kontakt", "Front")">Kontakt</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><a href="@Url.Action("Index", "Back")">Admin strana</a></li>
+                            }
+                            @if (User.IsInRole("Doktor"))
+                            {
+                                <li><a href="@Url.Action("Index", "Back")">Strana Za Doktore</a></li>
+                            }
+
+                            @Html.Partial("_LoginPartial")
+
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </div>
+        <!-- END MENU -->
+    </header>
+    <!--=========== END HEADER SECTION ================-->
+    
+        @RenderBody()
+ 
+
+        <!--=========== Start Footer SECTION ================-->
+        <footer id="footer">
+            <!-- Start Footer Top -->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="single-footer-widget">
+                                <div class="section-heading">
+                                    <h2>O Nama</h2>
+                                    <div class="line"></div>
+                                </div>
+                                <p>Osnovani 2018.Kvalifikacije stečene na Univerzitetu "Code University Online" Prvi uspeh zabeležen asistencijom na prvoj transplataciji mozga.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="single-footer-widget">
+                                <div class="section-heading">
+                                    <h2>Naši servisi</h2>
+                                    <div class="line"></div>
+                                </div>
+                                <ul class="footer-service">
+                                    <li><a href="#"><span class="fa fa-check"></span>Hirurgija</a></li>
+                                    <li><a href="#"><span class="fa fa-check"></span>Dermatologija</a></li>
+                                    <li><a href="#"><span class="fa fa-check"></span>Interna služba</a></li>
+                                    <li><a href="#"><span class="fa fa-check"></span>Oftalmologija</a></li>
+                                    @*<li><a href="#"><span class="fa fa-check"></span>Service 5</a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="single-footer-widget">
+                                <div class="section-heading">
+                                    <h2>Tags</h2>
+                                    <div class="line"></div>
+                                </div>
+                                <ul class="tag-nav">
+                                    <li><a href="#">Hirurgija</a></li>
+                                    <li><a href="#">Dermatologija</a></li>
+                                    <li><a href="#">Interna služba</a></li>
+                                    <li><a href="#">Oftalmologija</a></li>
+                                    @*<li><a href="#">Ophthalmology</a></li>
+                                    <li><a href="#">Diabetes</a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="single-footer-widget">
+                                <div class="section-heading">
+                                    <h2>Kontact Info</h2>
+                                    <div class="line"></div>
+                                </div>
+                                <p></p>
+                                <address class="contact-info">
+                                    <p>
+                                        <span class="fa fa-home"></span> Ulica Code Medic Br.3 , 11000 Beograd
+                                    </p>
+                                    <p><span class="fa fa-phone"></span>00381.64.1221221</p>
+                                    <p><span class="fa fa-envelope"></span>CodeMdeic@Medic.com</p>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Footer Middle -->
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-copyright">
+                                <p>&copy; Copyright @DateTime.Now.Year <a href="@Url.Action("Index","Front")">Code Medic</a></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-social">
+                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Design & Developed By CODE MEDIC <a rel="nofollow" href="#">L.G.I</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--=========== End Footer SECTION ================-->
+        <!-- jQuery Library  -->
+        <script src="~/assets/front/js/jquery.js"></script>
+        <!-- Bootstrap default js -->
+        <script src="~/assets/front/js/bootstrap.min.js"></script>
+        <!-- slick slider -->
+        <script src="~/assets/front/js/slick.min.js"></script>
+        <script type="text/javascript" src="~/assets/front/js/modernizr.custom.79639.js"></script>
+        <!-- counter -->
+        <script src="~/assets/front/js/waypoints.min.js"></script>
+        <script src="~/assets/front/js/jquery.counterup.min.js"></script>
+        <!-- Doctors hover effect -->
+        <script src="~/assets/front/js/snap.svg-min.js"></script>
+        <script src="~/assets/front/js/hovers.js"></script>
+        <!-- Photo Swipe Gallery Slider -->
+        <script src='~/assets/front/js/photoswipe.min.js'></script>
+        <script src='~/assets/front/js/photoswipe-ui-default.min.js'></script>
+        <script src="~/assets/front/js/photoswipe-gallery.js"></script>
+
+        <!-- Custom JS -->
+        <script src="~/assets/front/js/custom.js"></script>
+
+
+        @RenderSection("scripts", required: false)
+</body>
+</html>

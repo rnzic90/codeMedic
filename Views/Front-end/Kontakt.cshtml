@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Kontakt";
+    Layout = "~/Views/front-end/layout/front_end_layout.cshtml";
+}
+<div class="container">
+    <h2>Kontakt</h2>
+    <h2 style="padding-top:5px">Kontakt</h2>
+    </div>
+    <!--=========== BEGIN Google Map SECTION ================-->
+    <section id="googleMap">
+        <div class="mapouter">
+            <div class="gmap_canvas"><iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=belgrade&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a></div>
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 100%;
+                }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 500px;
+                    width: 100%;
+                }
+            </style>
+        </div>
+    </section>
+    <div class="container">
+        <!--=========== END Google Map SECTION ================-->
+        <section id="contact">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <div class="contact-form">
+                        <div class="section-heading">
+                            <h2>Kontaktirajte nas</h2>
+                            <div class="line"></div>
+                        </div>
+                        <p>Popunite sva polja da bi ste nam poslali poruku</p>
+                        <form class="submitphoto_form">
+                            <input type="text" class="wp-form-control wpcf7-text" placeholder="Vase ime i prezime">
+                            <input type="email" class="wp-form-control wpcf7-email" placeholder="Email adresa">
+                            <input type="text" class="wp-form-control wpcf7-text" placeholder="Tema">
+                            <textarea class="wp-form-control wpcf7-textarea" cols="30" rows="10" placeholder="Šta želite da nam kažete"></textarea>
+                            <button class="wpcf7-submit button--itzel" onClick="location.href='@Url.Action("Index","Front")'" type="submit"><i class="button__icon fa fa-envelope"></i><span>Pošalji</span></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="contact-address">
+                        <div class="section-heading">
+                            <h2>Kontakt Info</h2>
+                            <div class="line"></div>
+                        </div>
+                        <p></p>
+                        <address class="contact-info">
+                            <p>
+                                <span class="fa fa-home"></span> Ulica Code Medic Br.3 , 11000 Beograd
+                            </p>
+                            <p><span class="fa fa-phone"></span>00381.64.1221221</p>
+                            <p><span class="fa fa-envelope"></span>CodeMedic@Medic.com</p>
+                        </address>
+                        <h3>Društvene Mreže</h3>
+                        <div class="social-share">
+                            <ul>
+                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+                                <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </section>
+</div>

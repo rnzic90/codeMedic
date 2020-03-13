@@ -1,0 +1,196 @@
+﻿@model LekarskaOrdinacijaCodeMedic.Models.Zakazivanje
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Zakazivanje";
+    Layout = "~/Views/Front-end/layout/slika_layout.cshtml";
+
+}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+@section head{
+    <style type="text/css">
+        body {
+            background-image: url('/assets/front/images/14.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+}
+<body>
+
+    <h2 style="padding-top: 150px"></h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="width:600px; padding-left:60px;width:600px; padding-left:60px; padding-bottom:40px" class="form-horizontal">
+            <h4>Zakazivanje</h4>
+            <hr />
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <input type="hidden" id="id_korisnika" name="id_korisnika" value="@User.Identity.GetUserId()">
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Usluga.Id_specijalizacije, "Specijalisticka usluga", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownList("id_usluga", null, htmlAttributes: new { @class = "form-control", @onchange = "change_dropdown()" })
+                        @Html.ValidationMessageFor(model => model.Usluga.Id_specijalizacije, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AspNetUsers.ime_prezime, "Ime lekara", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select id="ime_prezime" title="" class="form-control">
+                            <option value="- -"></option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.AspNetUsers.ime_prezime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.vreme_pocetka, " Vreme Pocetka", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.vreme_pocetka,
+                            new List<SelectListItem> {
+                                new SelectListItem { Value = "", Text = "Odaberite termin", Disabled = true, Selected = true },
+                            new SelectListItem { Value = "10:30:000", Text = "10:30h"},
+                            new SelectListItem { Value = "11:00:000", Text = "11:00h"},
+                            new SelectListItem { Value = "11:30:000", Text = "11:30h"},
+                            new SelectListItem { Value = "12:00:00", Text = "12:00h"},
+                            new SelectListItem { Value = "12:30:000", Text = "12:30h"},
+                            },
+                            new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.vreme_pocetka, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.vreme_zavrsetka, " Datum Pregleda", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.vreme_zavrsetka,
+                            new List<SelectListItem> {
+                                new SelectListItem { Value = "", Text = "Odaberite termin", Disabled = true, Selected = true },
+                            new SelectListItem { Value = "2019-05-10", Text = "10/05/2019"},
+                            new SelectListItem { Value = "2019-05-11", Text = "11/05/2019"},
+                            new SelectListItem { Value = "2019-05-12", Text = "12/05/2019"},
+                             new SelectListItem { Value = "2019-05-13", Text = "13/05/2019"},
+                            new SelectListItem { Value = "2019-05-14", Text = "14/05/2019"},
+                            new SelectListItem { Value = "2019-05-15", Text = "15/05/2019"},
+                             new SelectListItem { Value = "2019-05-16", Text = "16/05/2019"},
+                            new SelectListItem { Value = "2019-05-17", Text = "17/05/2019"},
+                            new SelectListItem { Value = "2019-05-18", Text = "18/05/2019"},
+                          
+                            },
+                            new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.vreme_zavrsetka, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.beleska, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.beleska, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.beleska, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+                <p>Morate biti Ulogovani da bi ste zakazali pregled</p>
+
+            }
+
+
+            <div>
+                @Html.ActionLink("Login", "Login", "Account")
+            </div>
+
+
+        </div>
+
+
+    }
+</body>
+<script>
+
+    function GetState() {
+
+        $.ajax({
+            url: "@Url.Action("GetJsonState", "Zakazivanjes")",
+            dataType: "json",
+            type: "GET",
+            data:{id:$("#Specijalizacija").val()},
+            error: function () {
+            },
+            beforeSend: function () {
+            },
+            success: function (data) {
+                var items = "";
+                items = "<option value=''>Choose State</option>";
+                $.each(data, function (i, item) {
+                    items += "<option value=\"" + item.Value + "\">" + item.Text + "</option>";
+                });
+                $("#DropDownListStates").html(items);
+            }
+        });
+
+    }
+</script>
+
+
+
+<script type="text/javascript">
+
+
+    function change_dropdown() {
+        var selected_data = $('#id_usluga option:selected').val()
+        console.log(selected_data);
+        //alert(s);
+        $.ajax({
+            url: 'http://localhost:57141/filter/' + selected_data,
+            type: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data);
+                var subItems = "";
+                $.each(data, function (index, item) {
+                    subItems += "<option value='" + item.Id + "'>" + item.ime_prezime + "</option>"
+                });
+
+                $("#ime_prezime").html(subItems)
+
+            },
+            error: function () {
+                console.log(errorThrown);
+            }
+        });
+        return false;
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

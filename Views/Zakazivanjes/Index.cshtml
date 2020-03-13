@@ -1,0 +1,80 @@
+﻿@model IEnumerable<LekarskaOrdinacijaCodeMedic.Models.Zakazivanje>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/back-end/layout/back_end_layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="page-wrapper">
+    <div class="content">
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.vreme_pocetka)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usluga.cena)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.vreme_zavrsetka)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.beleska)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNetUsers.ime_prezime)
+                </th>
+
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Usluga.vrsta_usluge)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vreme_pocetka)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usluga.cena)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vreme_zavrsetka)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.beleska)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspNetUsers.ime_prezime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usluga.vrsta_usluge)
+                    </td>
+                    
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_zakazivanja }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_zakazivanja }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id_zakazivanja })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+ </div>
